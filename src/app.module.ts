@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common';
+import { ScheduleModule } from '@nestjs/schedule';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { EventEmitterModule } from '@nestjs/event-emitter';
@@ -10,6 +11,9 @@ import { RefuelingModule } from './refueling.module';
       isGlobal: true,
     }),
     EventEmitterModule.forRoot(),
+    ScheduleModule.forRoot(),
+    RefuelingModule,
+
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       inject: [ConfigService],
